@@ -1,10 +1,23 @@
-SVGComponentTransferFunctionElement.define(
-  ["sap/ui/core/mvc/controller"],
-  function (controller) {
+// webapp/sap/ui/demo/walkthrough/controller/App.controller.js
+sap.ui.define(
+  [
+    "sap/ui/core/mvc/Controller",
+    "sap/m/MessageToast",
+    "sap/ui/model/json/JSONModel",
+    "sap/ui/model/resource/ResourceModel",
+  ],
+  function (Controller, MessageToast, JSONModel) {
     "use strict";
-    return controller.extend("sap.ui.demo.walkthrough.controller.App", {
+
+    return Controller.extend("sap.ui.demo.walkthrough.controller.App", {
+      /**
+       * @override
+       */
+      onInit: function () {
+        console.log("loading data model ...");
+      },
       onShowHello: function () {
-        alert("hello from the controller 😒");
+        MessageToast.show(`Hello from the controller 👋`);
       },
     });
   }

@@ -1,5 +1,7 @@
-<core:fragmentDefinition xmlns="sap.m"
+<!-- Correct -->
+<core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core">
+
     <Dialog id="helloDialog" title="hello {/recipient/name}" class="sapUiContentPadding">
         <content>
             <Text text="{i18n>helloMsg} {/recipient/name}" />
@@ -10,4 +12,4 @@
     </Dialog>
 
 
-</core:fragmentDefinition>
+</core:FragmentDefinition>

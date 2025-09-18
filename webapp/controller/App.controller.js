@@ -16,9 +16,6 @@ sap.ui.define(
       onInit: function () {
         console.log("loading data model ...");
       },
-      onShowHello: function () {
-        MessageToast.show(`Hello from the controller 👋`);
-      },
     });
   }
 );

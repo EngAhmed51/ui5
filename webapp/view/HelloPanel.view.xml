@@ -3,7 +3,7 @@
     xmlns:mvc="sap.ui.core.mvc">
     <Panel headerText="{i18n>helloPanelTitle}">
         <content>
-            <Button class="sapUiSmallMarginEnd myCustomButton" text="{i18n>openDialogButtonText}" press=".onOpenDialog"></Button>
+            <Button icon="sap-icon://world" class="sapUiSmallMarginEnd myCustomButton" text="{i18n>openDialogButtonText}" press=".onOpenDialog"></Button>
             <Button text="{i18n>showHelloButtonText}" press=".onShowHello" class="sapUiSmallMarginEnd myCustomButton"></Button>
 
             <Input value="{/recipient/name}" description="hello {/recipient/name}" valueLiveUpdate="true" width="30%"></Input>

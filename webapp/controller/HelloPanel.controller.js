@@ -9,13 +9,19 @@ sap.ui.define(
       onOpenDialog: function () {
         //create dialoge lazily
         if (!this.pDialog) {
+          console.log("show dialouge pressed ");
           this.pDialog = this.loadFragment({
             name: "sap.ui.demo.walkthrough.view.helloDialog",
           });
         }
         this.pDialog.then(function (oDialog) {
+          console.log("oDialoug openned");
           oDialog.open();
         });
+      },
+
+      onCloseDialog: function () {
+        this.byId("helloDialog").close();
       },
     });
   }

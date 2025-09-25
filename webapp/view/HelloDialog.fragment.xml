@@ -4,11 +4,13 @@
 
     <Dialog id="helloDialog" title="hello {/recipient/name}" class="sapUiContentPadding">
         <content>
+            <core:Icon src="sap-icon://hello-world">
+            </core:Icon>
             <Text text="{i18n>helloMsg} {/recipient/name}" />
         </content>
-        <endButton>
-            <Button text="{i18n>closeButtonText}" press=".onCloseDialog" />
-        </endButton>
+        <beginButton>
+            <Button text="{i18n>dialogCloseButtonText}" press=".onCloseDialog" />
+        </beginButton>
     </Dialog>
 
 

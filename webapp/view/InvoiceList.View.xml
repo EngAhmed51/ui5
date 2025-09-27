@@ -1,0 +1,13 @@
+<mvc:View controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <List headerText="{i18n>invoiceListTitle}" items="{invoice>/Invoices}" class="sapUiResponsiveMargin" width="auto">
+        <items>
+            <ObjectListItem title="{invoice>ProductName}" intro="{invoice>ShipperName}" number="{invoice>ExtendedPrice}" numberUnit="{i18n>invoiceCurrency}">
+                <attributes>
+                    <ObjectAttribute text="{= ${invoice>Quantity} + ' x ' + ${invoice>status}}" />
+                </attributes>
+            </ObjectListItem>
+        </items>
+    </List>
+</mvc:View>

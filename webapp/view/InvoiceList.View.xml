@@ -1,16 +1,16 @@
-<mvc:View
-  controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
-  xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m">
-  <List
-    class="sapUiResponsiveMargin"
-    headerText="{i18n>invoiceListTitle}"
-    items="{invoice>/Invoices}"
-    width="auto">
-    <items>
-      <ObjectListItem
-        intro="{invoice>ShipperName}"
-        number="{
+<mvc:View controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <List id="invoicesList" class="sapUiResponsiveMargin" headerText="{i18n>invoiceListTitle}" items="{invoice>/Invoices}" width="auto">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{i18n>invoiceListTitle}" />
+                <ToolbarSpacer></ToolbarSpacer>
+                <SearchField width="50%" search=".onFilterInvoices"></SearchField>
+            </Toolbar>
+        </headerToolbar>
+        <items>
+            <ObjectListItem intro="{invoice>ShipperName}" number="{
           parts: [
             { path: 'invoice>ExtendedPrice' },
             { path: 'view>/currency' }
@@ -19,21 +19,18 @@
           formatOptions: {
             showMeasure: false
           }
-        }"
-        numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Success' : 'Error'}"
-        numberUnit="{view>/currency}"
-        title="{invoice>ProductName}">
-        <firstStatus>
-          <ObjectStatus
-            text="{
+        }" numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Success' : 'Error'}" numberUnit="{view>/currency}" title="{invoice>ProductName}">
+                <firstStatus>
+                    <ObjectStatus text="{
               path: 'invoice>status',
               formatter: '.formatter.statusText'
             }" />
-        </firstStatus>
-        <attributes>
-          <ObjectAttribute text="{= ${invoice>Quantity} + ' × ' + ${invoice>status}}" />
-        </attributes>
-      </ObjectListItem>
-    </items>
-  </List>
+                </firstStatus>
+                <attributes>
+                    <ObjectAttribute text="{= ${invoice>Quantity} + ' × ' + ${invoice>status}}" />
+                </attributes>
+            </ObjectListItem>
+        </items>
+    </List>
+
 </mvc:View>

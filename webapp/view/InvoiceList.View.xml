@@ -1,13 +1,39 @@
-<mvc:View controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <List headerText="{i18n>invoiceListTitle}" items="{invoice>/Invoices}" class="sapUiResponsiveMargin" width="auto">
-        <items>
-            <ObjectListItem title="{invoice>ProductName}" intro="{invoice>ShipperName}" number="{invoice>ExtendedPrice}" numberUnit="{i18n>invoiceCurrency}">
-                <attributes>
-                    <ObjectAttribute text="{= ${invoice>Quantity} + ' x ' + ${invoice>status}}" />
-                </attributes>
-            </ObjectListItem>
-        </items>
-    </List>
+<mvc:View
+  controllerName="sap.ui.demo.walkthrough.controller.InvoiceList"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <List
+    class="sapUiResponsiveMargin"
+    headerText="{i18n>invoiceListTitle}"
+    items="{invoice>/Invoices}"
+    width="auto">
+    <items>
+      <ObjectListItem
+        intro="{invoice>ShipperName}"
+        number="{
+          parts: [
+            { path: 'invoice>ExtendedPrice' },
+            { path: 'view>/currency' }
+          ],
+          type: 'sap.ui.model.type.Currency',
+          formatOptions: {
+            showMeasure: false
+          }
+        }"
+        numberState="{= ${invoice>ExtendedPrice} > 50 ? 'Success' : 'Error'}"
+        numberUnit="{view>/currency}"
+        title="{invoice>ProductName}">
+        <firstStatus>
+          <ObjectStatus
+            text="{
+              path: 'invoice>status',
+              formatter: '.formatter.statusText'
+            }" />
+        </firstStatus>
+        <attributes>
+          <ObjectAttribute text="{= ${invoice>Quantity} + ' × ' + ${invoice>status}}" />
+        </attributes>
+      </ObjectListItem>
+    </items>
+  </List>
 </mvc:View>
